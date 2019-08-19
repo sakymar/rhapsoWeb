@@ -4,6 +4,7 @@ import logo from "./assets/images/logo.png";
 import Home from "./sections/Home";
 import Features from "./sections/Features";
 import OpenSource from "./sections/OpenSource";
+import Download from "./sections/Download";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -25,12 +26,16 @@ font-family: 'Montserrat', sans-serif; */
 `;
 
 const Header = styled.header`
+  position: fixed;
+
   height: 80px;
+  width: 95%;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-left: 4vw;
-
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
   .logo {
     height: 35px;
     width: 30px;
@@ -99,6 +104,7 @@ function App() {
       <Home />
       <Features />
       <OpenSource />
+      <Download />
     </AppContainer>
   );
 }
