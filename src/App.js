@@ -1,25 +1,105 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import logo from "./assets/images/logo.png";
+import Home from "./sections/Home";
+import Features from "./sections/Features";
+import OpenSource from "./sections/OpenSource";
+
+const AppContainer = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  color: #1b1f3b;
+  overflow-y: auto;
+  height: 100%;
+
+  /* font-family: 'Hind', sans-serif;
+
+font-family: 'Josefin Sans', sans-serif;
+
+font-family: 'Montserrat', sans-serif; */
+`;
+
+const Header = styled.header`
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 4vw;
+
+  .logo {
+    height: 35px;
+    width: 30px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-left: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+  }
+
+  .headerRight {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 4vw;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .headerRightElement {
+    margin-right: 40px;
+    font-size: 14px;
+  }
+
+  .headerRightElement:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  .downloadButton {
+    height: 40px;
+    border-radius: 24px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ac3fff;
+    color: white;
+  }
+
+  .downloadButton:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Header>
+        <img src={logo} className="logo" />
+        <h1 className="title">Rhapso FileOrganizer</h1>
+        <div className="headerRight">
+          <p className="headerRightElement">Features</p>
+          <p className="headerRightElement">Contribute</p>
+          <p className="headerRightElement">About me</p>
+          <div className="downloadButton">
+            <p>download the apps</p>
+          </div>
+        </div>
+      </Header>
+      <Home />
+      <Features />
+      <OpenSource />
+    </AppContainer>
   );
 }
 
