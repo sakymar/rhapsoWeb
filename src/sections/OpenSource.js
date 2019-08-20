@@ -6,14 +6,21 @@ import twitter from "../assets/images/twitter.png";
 import instagram from "../assets/images/instagram.png";
 import wave from "../assets/images/wave.svg";
 
+import { Spring } from "react-spring/renderprops";
+import VisibilitySensor from "../VisibilitySensor";
+
 const OpenSourceContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
 
   #wave {
     position: relative;
     height: 80px;
     width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
     background: rgba(248, 223, 230, 1);
   }
 
@@ -132,6 +139,13 @@ const OpenSourceContainer = styled.div`
     }
   }
 
+  @media (max-width: 1900px) {
+    .roadmapText {
+      font-size: 14px;
+      line-height: 1.2;
+    }
+  }
+
   .textOpenSource {
     font-size: 20px;
     line-height: 1.6;
@@ -141,10 +155,17 @@ const OpenSourceContainer = styled.div`
     margin-bottom: 40px;
   }
 
+  @media (max-width: 1900px) {
+    .textOpenSource {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+
   .githubLogo {
-    width: 160px;
-    height: 160px;
-    margin-left: calc(50% - 80px);
+    width: 50%;
+    height: 20%;
+    margin-left: 25%;
   }
 
   .githubLogo:hover {
@@ -187,7 +208,7 @@ const OpenSourceContainer = styled.div`
     margin-top: -50px;
     transform: rotate(180deg);
     img {
-      height: 200px;
+      height: 205px;
       width: 100%;
     }
   }
@@ -198,94 +219,113 @@ const OpenSource = () => (
     <div className="waveTest">
       <img src={wave} />
     </div>
-    <div className="content">
-      <div className="card">
-        <h1 className="titleExplain">Roadmap</h1>
-        <div className="separator" />
-        <div className="roadmapContent">
-          <div className="roadmapNumbers">
-            <div className="ball ballInactive">
-              <p>1</p>
-            </div>
-            <div className="horizontalBar" />
-            <div className="ball">
-              <p>2</p>
-            </div>
-            <div className="horizontalBar" />
-            <div className="ball">
-              <p>3</p>
-            </div>
-            <div className="horizontalBar" />
-            <div className="ball">
-              <p>4</p>
-            </div>
-          </div>
-          <div className="roadmapText">
-            <p className="inactive">
-              Official release of the app,Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nam vitae risus diam. Maecenas
-            </p>
-            <p>
-              Version with trackers and automated rules,Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit. Nam vitae risus diam. Maecenas
-              iaculis sit amet
-            </p>
-            <p>
-              Your own ideas and features, Official release of the app,Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae risus
-            </p>
-            <p>
-              Pushing forward code quality and maintenance,Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit. Nam vitae risus diam. Maecenas
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="card cardActive">
-        <h1 className="titleExplain">The project is open source</h1>
-        <div className="separator" />
-        <p className="textOpenSource">
-          Which means it is fully accessible<strong> to anyone</strong> and that
-          it is <strong>free</strong> and always will be.
-        </p>
-        <p className="textOpenSource">
-          Everyone can <strong>contribute</strong> to the project and are
-          encouraged to, follow the instructions to start working with the
-          community
-        </p>
-        <img src={githubLogo} className="githubLogo" />
-        <iframe
-          src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large"
-          frameborder="0"
-          scrolling="0"
-          width="160px"
-          height="30px"
-          style={{ marginLeft: "calc(50% - 80px)", marginTop: "10px" }}
-        />
-      </div>
-      <div className="card">
-        <h1 className="titleExplain">Give your support</h1>
-        <div className="separator" />
-        <p className="textOpenSource">
-          Just by spreading the word, <strong>share it</strong> on your networks
-          to make the apps more known
-        </p>
-        <div className="socialLogoContainer">
-          <img src={facebook} className="socialLogo" />
+    <VisibilitySensor once>
+      {({ isVisible }) => (
+        <Spring
+          config={{ duration: 300 }}
+          delay={0}
+          to={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(40px)"
+          }}
+        >
+          {props => (
+            <div style={props} className="content">
+              <div className="card">
+                <h1 className="titleExplain">Roadmap</h1>
+                <div className="separator" />
+                <div className="roadmapContent">
+                  <div className="roadmapNumbers">
+                    <div className="ball ballInactive">
+                      <p>1</p>
+                    </div>
+                    <div className="horizontalBar" />
+                    <div className="ball">
+                      <p>2</p>
+                    </div>
+                    <div className="horizontalBar" />
+                    <div className="ball">
+                      <p>3</p>
+                    </div>
+                    <div className="horizontalBar" />
+                    <div className="ball">
+                      <p>4</p>
+                    </div>
+                  </div>
+                  <div className="roadmapText">
+                    <p className="inactive">
+                      Official release of the app,Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Nam vitae risus diam.
+                      Maecenas
+                    </p>
+                    <p>
+                      Version with trackers and automated rules,Lorem ipsum
+                      dolor sit amet, consectetur adipiscing elit. Nam vitae
+                      risus diam. Maecenas iaculis sit amet
+                    </p>
+                    <p>
+                      Your own ideas and features, Official release of the
+                      app,Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit. Nam vitae risus
+                    </p>
+                    <p>
+                      Pushing forward code quality and maintenance,Lorem ipsum
+                      dolor sit amet, consectetur adipiscing elit. Nam vitae
+                      risus diam. Maecenas
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="card cardActive">
+                <h1 className="titleExplain">The project is open source</h1>
+                <div className="separator" />
+                <p className="textOpenSource">
+                  Which means it is fully accessible<strong> to anyone</strong>{" "}
+                  and that it is <strong>free</strong> and always will be.
+                </p>
+                <p className="textOpenSource">
+                  Everyone can <strong>contribute</strong> to the project and
+                  are encouraged to, follow the instructions to start working
+                  with the community
+                </p>
+                <img src={githubLogo} className="githubLogo" />
+                <iframe
+                  src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large"
+                  frameborder="0"
+                  scrolling="0"
+                  width="160px"
+                  height="30px"
+                  style={{ marginLeft: "calc(50% - 80px)", marginTop: "10px" }}
+                />
+              </div>
+              <div className="card">
+                <h1 className="titleExplain">Give your support</h1>
+                <div className="separator" />
+                <p className="textOpenSource">
+                  Just by spreading the word, <strong>share it</strong> on your
+                  networks to make the apps more known
+                </p>
+                <div className="socialLogoContainer">
+                  <img src={facebook} className="socialLogo" />
 
-          <img src={twitter} className="socialLogo" />
+                  <img src={twitter} className="socialLogo" />
 
-          <img src={instagram} className="socialLogo" />
-        </div>
-        <p className="textOpenSource" style={{ marginTop: "20px" }}>
-          Or consider giving a <strong>tip</strong>, that will me motivate to
-          work and maybe allocate some professional time on the project
-        </p>
-        <div className="downloadButton">
-          <p>donate</p>
-        </div>
-      </div>
-    </div>
+                  <img src={instagram} className="socialLogo" />
+                </div>
+                <p className="textOpenSource" style={{ marginTop: "20px" }}>
+                  Or consider giving a <strong>tip</strong>, that will me
+                  motivate to work and maybe allocate some professional time on
+                  the project
+                </p>
+                <div className="downloadButton">
+                  <p>donate</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </Spring>
+      )}
+    </VisibilitySensor>
   </OpenSourceContainer>
 );
 

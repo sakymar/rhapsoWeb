@@ -27,8 +27,10 @@ const DownloadContainer = styled.div`
     }
 
     img {
-      width: 300px;
-      height: 300px;
+      min-width: 100px;
+      min-height: 100px;
+      width: 30%;
+      height: 30%;
     }
   }
 
@@ -36,7 +38,8 @@ const DownloadContainer = styled.div`
     height: 60px;
     border-radius: 32px;
     margin-top: 50px;
-    width: 360px;
+    width: 60%;
+    min-width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +49,12 @@ const DownloadContainer = styled.div`
     font-size: 16px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 1600px) {
+    .downloadButton {
+      font-size: 14px;
+    }
   }
 
   .downloadButton:hover {
@@ -71,7 +80,7 @@ const DownloadContainer = styled.div`
     );
     margin-top: auto;
     width: 100%;
-    height: 100px;
+    height: 10%;
   }
 `;
 

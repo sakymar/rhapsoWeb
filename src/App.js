@@ -5,10 +5,13 @@ import Home from "./sections/Home";
 import Features from "./sections/Features";
 import OpenSource from "./sections/OpenSource";
 import Download from "./sections/Download";
+import { animated, useSpring } from "react-spring";
+import { Link, Element } from "react-scroll";
 
 const AppContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
+  max-width: 100vw;
   overflow-x: hidden;
   margin: 0;
   height: 0;
@@ -17,6 +20,11 @@ const AppContainer = styled.div`
   color: #1b1f3b;
   overflow-y: auto;
   height: 100%;
+
+  > * {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 
   /* font-family: 'Hind', sans-serif;
 
@@ -27,7 +35,7 @@ font-family: 'Montserrat', sans-serif; */
 
 const Header = styled.header`
   position: fixed;
-
+  z-index: 5;
   height: 80px;
   width: 95%;
   display: flex;
@@ -65,7 +73,7 @@ const Header = styled.header`
   }
 
   .headerRightElement:hover {
-    opacity: 0.8;
+    opacity: 0.4;
     cursor: pointer;
   }
 
@@ -84,27 +92,63 @@ const Header = styled.header`
     opacity: 0.8;
     cursor: pointer;
   }
+
+  .activeLink {
+    text-decoration: underline;
+  }
 `;
 
+// const scrollTo = () => {
+//   scroller.scrollTo("scroll-to-element", {
+//     duration: 800,
+//     delay: 0,
+//     smooth: "easeInOutQuart"
+//   });
+// };
+
 function App() {
+  const fadeIn = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    config: { duration: 600 }
+  });
+
   return (
     <AppContainer>
-      <Header>
-        <img src={logo} className="logo" />
-        <h1 className="title">Rhapso FileOrganizer</h1>
-        <div className="headerRight">
-          <p className="headerRightElement">Features</p>
-          <p className="headerRightElement">Contribute</p>
-          <p className="headerRightElement">About me</p>
-          <div className="downloadButton">
-            <p>download the apps</p>
+      <animated.div style={fadeIn}>
+        <Header>
+          <img src={logo} className="logo" />
+          <h1 className="title">Rhapso FileOrganizer</h1>
+          <div className="headerRight">
+            <Link smooth={true} to="features" spy={true}>
+              <p className="headerRightElement">Features</p>
+            </Link>
+            <Link smooth={true} to="contribute" spy={true}>
+              <p className="headerRightElement">Contribute</p>
+            </Link>
+            <Link offset={100} smooth={true} to="contribute" spy={true}>
+              <p className="headerRightElement">About me</p>
+            </Link>
+            <Link smooth={true} to="download" spy={true}>
+              <div className="downloadButton">
+                <p>download the apps</p>
+              </div>
+            </Link>
           </div>
-        </div>
-      </Header>
-      <Home />
-      <Features />
-      <OpenSource />
-      <Download />
+        </Header>
+        <Home />
+        <Element name="features">
+          {" "}
+          <Features />
+        </Element>
+
+        <Element name="contribute">
+          <OpenSource />
+        </Element>
+        <Element name="download">
+          <Download />
+        </Element>
+      </animated.div>
     </AppContainer>
   );
 }

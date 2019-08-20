@@ -2,17 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import sort from "../assets/images/sort.svg";
 import doubleChevronDown from "../assets/images/doubleChevronDown.png";
+import { useSpring, animated } from "react-spring";
+import Scroll from "react-scroll";
 
 const HomeContainer = styled.div`
-  height: calc(100vh - 80px);
+  height: 99vh;
   display: flex;
   flex-direction: column;
 
   .heroContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 10vw;
+    grid-gap: 8vw;
     height: 70%;
+    margin-top: 5%;
   }
 
   .heroContent > * {
@@ -76,38 +79,75 @@ const HomeContainer = styled.div`
     font-family: "Hind", sans-serif;
     color: #595c70;
   }
+
+  @media (max-width: 1600px) {
+    .titleExplain {
+      font-size: 40px;
+    }
+
+    .textExplain {
+      max-width: 550px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
 `;
 
-const Home = () => (
-  <HomeContainer>
-    <div className="heroContent">
-      <div>
-        <img src={sort} />
+const scrollMore = () => {
+  Scroll.animateScroll.scrollTo(window.innerHeight);
+};
+
+const Home = () => {
+  const fadeTranslate = useSpring({
+    to: { opacity: 1, transform: "translate3d(0,0,0)" },
+    from: { opacity: 0, transform: "translate3d(-100px,100px,0)" },
+    config: { duration: 400 },
+    delay: 400
+  });
+
+  const fadeIn = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    config: { duration: 1000 },
+    delay: 400
+  });
+
+  return (
+    <HomeContainer>
+      <div className="heroContent">
+        <animated.div style={fadeTranslate}>
+          <img src={sort} />
+        </animated.div>
+        <animated.div style={fadeIn} className="textContainer">
+          <h1 className="titleExplain">
+            Struggle to keep your files
+            <br /> in order ?
+          </h1>
+          <div className="separator" />
+          <p className="textExplain">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae
+            risus diam. Maecenas iaculis sit amet ligula lacinia vestibulum.
+            Morbi tempus, ex at pulvinar aliquet, quam risus tristique nisl, a
+            rhoncus quam metus vitae velit. Sed varius posuere dignissim. Sed id
+            dictum libero. Praesent nunc turpis, ultrices eu dictum eu, tempor
+            vel dolor. Integer in massa auctor, posuere quam quis, interdum sem.
+            Proin nec pharetra lacus. Ut sit amet erat ut ipsum tempus luctus.
+            Sed sapien sem, luctus vitae leo quis, ullamcorper viverra nisi.
+            Morbi imperdiet ipsum a nibh convallis dignissim. Donec venenatis
+            vitae dolor pharetra ornare. Sed egestas pellentesque est quis
+            mattis.{" "}
+          </p>
+        </animated.div>
       </div>
-      <div className="textContainer">
-        <h1 className="titleExplain">
-          Struggle to keep your files
-          <br /> in order ?
-        </h1>
-        <div className="separator" />
-        <p className="textExplain">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae
-          risus diam. Maecenas iaculis sit amet ligula lacinia vestibulum. Morbi
-          tempus, ex at pulvinar aliquet, quam risus tristique nisl, a rhoncus
-          quam metus vitae velit. Sed varius posuere dignissim. Sed id dictum
-          libero. Praesent nunc turpis, ultrices eu dictum eu, tempor vel dolor.
-          Integer in massa auctor, posuere quam quis, interdum sem. Proin nec
-          pharetra lacus. Ut sit amet erat ut ipsum tempus luctus. Sed sapien
-          sem, luctus vitae leo quis, ullamcorper viverra nisi. Morbi imperdiet
-          ipsum a nibh convallis dignissim. Donec venenatis vitae dolor pharetra
-          ornare. Sed egestas pellentesque est quis mattis.{" "}
-        </p>
+      <div className="goNext">
+        <img
+          onClick={() => scrollMore()}
+          src={doubleChevronDown}
+          className="goNextIcon"
+        />
       </div>
-    </div>
-    <div className="goNext">
-      <img src={doubleChevronDown} className="goNextIcon" />
-    </div>
-  </HomeContainer>
-);
+    </HomeContainer>
+  );
+};
 
 export default Home;
