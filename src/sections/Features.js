@@ -35,7 +35,7 @@ const FeaturesContainer = styled.div`
     }
   }
 
-  @media (max-width: 1600px) and (min-width: 1400px) {
+  @media (max-width: 1800px) and (min-width: 1400px) {
     .screenProduct {
       height: 400px;
       width: 750px;
@@ -132,7 +132,7 @@ const FeaturesContainer = styled.div`
     }
   }
 
-  @media (max-width: 1600px) {
+  @media (max-width: 1800px) {
     .titleExplain {
       p {
         font-size: 38px;

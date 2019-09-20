@@ -52,7 +52,7 @@ const DownloadContainer = styled.div`
     text-transform: uppercase;
   }
 
-  @media screen and (max-width: 1600px) {
+  @media screen and (max-width: 1800px) {
     .downloadButton {
       font-size: 14px;
     }

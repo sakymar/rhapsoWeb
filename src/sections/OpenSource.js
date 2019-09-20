@@ -139,7 +139,7 @@ const OpenSourceContainer = styled.div`
     }
   }
 
-  @media (max-width: 1800px) {
+  @media (max-width: 1900px) {
     .roadmapText {
       font-size: 14px;
       line-height: 1.2;
@@ -155,7 +155,7 @@ const OpenSourceContainer = styled.div`
     margin-bottom: 40px;
   }
 
-  @media (max-width: 1800px) {
+  @media (max-width: 1900px) {
     .textOpenSource {
       font-size: 16px;
       line-height: 1.4;

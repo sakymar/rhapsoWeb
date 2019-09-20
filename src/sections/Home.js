@@ -80,7 +80,7 @@ const HomeContainer = styled.div`
     color: #595c70;
   }
 
-  @media (max-width: 1600px) {
+  @media (max-width: 1800px) {
     .titleExplain {
       font-size: 40px;
     }
