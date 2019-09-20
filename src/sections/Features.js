@@ -247,14 +247,16 @@ class Features extends Component {
   }
 
   handleScroll(props) {
-    this.setState({
-      scrolled:
-        props && props.path && props.path[1]
-          ? props.path[1].pageYOffset > props.path[1].outerHeight
-          : false,
-      indexScrolled: props.path[1].pageYOffset / props.path[1].outerHeight,
-      position: props.path[1].pageYOffset
-    });
+    if (props && props.path && props.path[1]) {
+      this.setState({
+        scrolled:
+          props && props.path && props.path[1]
+            ? props.path[1].pageYOffset > props.path[1].outerHeight
+            : false,
+        indexScrolled: props.path[1].pageYOffset / props.path[1].outerHeight,
+        position: props.path[1].pageYOffset
+      });
+    }
   }
 
   componentDidMount() {
