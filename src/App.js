@@ -112,6 +112,7 @@ function App() {
     from: { opacity: 0 },
     config: { duration: 600 }
   });
+  console.log("APP", window.innerHeight, window.innerWidth);
 
   return (
     <AppContainer>
