@@ -5,6 +5,7 @@ import windows from "../assets/images/windows.svg";
 
 const DownloadContainer = styled.div`
   height: 80vh;
+  margin-top: 15vh;
   width: 100vw;
   background-color: white;
   justify-content: center;

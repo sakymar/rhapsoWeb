@@ -57,7 +57,7 @@ const OpenSourceContainer = styled.div`
   }
 
   .card {
-    height: 45vh;
+    height: 55vh;
     width: 20vw;
     padding: 40px;
     background-color: white;
@@ -67,7 +67,7 @@ const OpenSourceContainer = styled.div`
 
   .cardActive {
     z-index: 2;
-    height: 50vh;
+    height: 60vh;
     margin-top: -2vh;
   }
 
@@ -139,9 +139,9 @@ const OpenSourceContainer = styled.div`
     }
   }
 
-  @media (max-width: 1900px) {
+  @media (max-width: 1800px) {
     .roadmapText {
-      font-size: 14px;
+      font-size: 12px;
       line-height: 1.2;
     }
   }
@@ -155,9 +155,9 @@ const OpenSourceContainer = styled.div`
     margin-bottom: 40px;
   }
 
-  @media (max-width: 1900px) {
+  @media (max-width: 1800px) {
     .textOpenSource {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.4;
     }
   }
