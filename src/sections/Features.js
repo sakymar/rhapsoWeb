@@ -361,7 +361,7 @@ class Features extends Component {
                       )}
                       {indexScrolled > 2.8 && (
                         <div id="t3" style={props} className="titleExplain">
-                          <p className="textTest">On macOS and windows</p>
+                          <p className="textTest">On macOS, windows, linux</p>
                         </div>
                       )}
                     </React.Fragment>
